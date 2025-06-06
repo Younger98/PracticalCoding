@@ -41,7 +41,7 @@ namespace PracticalCoding.Web.Models
 
         public DbSet<Chartdata> Chartdatas { get; set; }
 
-
+        public System.Data.Entity.DbSet<PracticalCoding.Web.Models.Expense> Expenses { get; set; }
     }
 }
 
