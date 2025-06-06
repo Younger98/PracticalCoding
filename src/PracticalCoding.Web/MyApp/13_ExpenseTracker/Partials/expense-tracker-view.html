@@ -1,0 +1,82 @@
+<div ng-controller="ExpenseController as vm">
+    <h2>Daily Expense Tracker</h2>
+
+    <div ng-if="vm.errorMessage" class="alert alert-danger">
+        {{vm.errorMessage}}
+        <button type="button" class="close" ng-click="vm.clearMessages()">&times;</button>
+    </div>
+    <div ng-if="vm.successMessage" class="alert alert-success">
+        {{vm.successMessage}}
+        <button type="button" class="close" ng-click="vm.clearMessages()">&times;</button>
+    </div>
+
+    <!-- Add/Edit Expense Form -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ vm.editingExpense ? 'Edit Expense' : 'Add New Expense' }}</h3>
+        </div>
+        <div class="panel-body">
+            <form name="expenseForm" ng-submit="vm.editingExpense ? vm.saveExpense() : vm.addExpense()" class="form-horizontal">
+                <div class="form-group">
+                    <label for="date" class="col-sm-2 control-label">Date:</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" id="date" ng-model="vm.editingExpense ? vm.editingExpense.Date : vm.newExpense.Date" ng-model-options="{ timezone: 'UTC' }" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description" class="col-sm-2 control-label">Description:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="description" placeholder="Expense description" ng-model="vm.editingExpense ? vm.editingExpense.Description : vm.newExpense.Description" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="amount" class="col-sm-2 control-label">Amount:</label>
+                    <div class="col-sm-10">
+                        <input type="number" step="0.01" class="form-control" id="amount" placeholder="Amount" ng-model="vm.editingExpense ? vm.editingExpense.Amount : vm.newExpense.Amount" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category" class="col-sm-2 control-label">Category:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="category" placeholder="Category (e.g., Food, Transport)" ng-model="vm.editingExpense ? vm.editingExpense.Category : vm.newExpense.Category">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">{{ vm.editingExpense ? 'Save Changes' : 'Add Expense' }}</button>
+                        <button type="button" class="btn btn-default" ng-if="vm.editingExpense" ng-click="vm.cancelEdit()">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Expense List -->
+    <h3>Expense History</h3>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="expense in vm.expenses | orderBy:'-Date'">
+                <td>{{ expense.Date | date:'yyyy-MM-dd' }}</td>
+                <td>{{ expense.Description }}</td>
+                <td>{{ expense.Amount | currency }}</td>
+                <td>{{ expense.Category }}</td>
+                <td>
+                    <button class="btn btn-xs btn-info" ng-click="vm.editExpense(expense)">Edit</button>
+                    <button class="btn btn-xs btn-danger" ng-click="vm.deleteExpense(expense.Id)">Delete</button>
+                </td>
+            </tr>
+            <tr ng-if="!vm.expenses.length">
+                <td colspan="5" class="text-center">No expenses recorded yet.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

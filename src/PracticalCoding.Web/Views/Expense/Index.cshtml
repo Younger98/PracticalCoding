@@ -1,0 +1,20 @@
+@{
+    ViewBag.Title = "Expense Tracker";
+}
+
+<div ng-app="app.expenseTracker">
+    <div ng-view></div>
+</div>
+
+@section scripts {
+    @* Angular and UI-Router should already be in _Layout.cshtml or BundleConfig if used globally *
+    @* If not, ensure they are loaded. Example:
+    <script src="~/Scripts/angular/angular.js"></script>
+    <script src="~/Scripts/angular/angular-route.js"></script>
+    *@
+
+    @* Specific scripts for this page *@
+    <script src="~/MyApp/13_ExpenseTracker/app.js"></script>
+    <script src="~/MyApp/13_ExpenseTracker/expenseService.js"></script>
+    <script src="~/MyApp/13_ExpenseTracker/expenseController.js"></script>
+}
