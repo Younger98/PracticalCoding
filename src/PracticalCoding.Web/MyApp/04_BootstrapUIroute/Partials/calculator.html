@@ -1,0 +1,41 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Calculator</h2>
+                    <div id="calculator" ng-controller="calculatorController">
+                        <input type="text" id="display" class="form-control mb-3 text-right" ng-model="displayValue" disabled>
+                        <div class="row">
+                            <div class="col-3"><button class="btn btn-light btn-block" ng-click="appendToDisplay('7')">7</button></div>
+                            <div class="col-3"><button class="btn btn-light btn-block" ng-click="appendToDisplay('8')">8</button></div>
+                            <div class="col-3"><button class="btn btn-light btn-block" ng-click="appendToDisplay('9')">9</button></div>
+                            <div class="col-3"><button class="btn btn-warning btn-block" ng-click="appendToDisplay('/')">/</button></div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-3"><button class="btn btn-light btn-block" ng-click="appendToDisplay('4')">4</button></div>
+                            <div class="col-3"><button class="btn btn-light btn-block" ng-click="appendToDisplay('5')">5</button></div>
+                            <div class="col-3"><button class="btn btn-light btn-block" ng-click="appendToDisplay('6')">6</button></div>
+                            <div class="col-3"><button class="btn btn-warning btn-block" ng-click="appendToDisplay('*')">*</button></div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-3"><button class="btn btn-light btn-block" ng-click="appendToDisplay('1')">1</button></div>
+                            <div class="col-3"><button class="btn btn-light btn-block" ng-click="appendToDisplay('2')">2</button></div>
+                            <div class="col-3"><button class="btn btn-light btn-block" ng-click="appendToDisplay('3')">3</button></div>
+                            <div class="col-3"><button class="btn btn-warning btn-block" ng-click="appendToDisplay('-')">-</button></div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-3"><button class="btn btn-light btn-block" ng-click="appendToDisplay('0')">0</button></div>
+                            <div class="col-3"><button class="btn btn-light btn-block" ng-click="appendToDisplay('.')">.</button></div>
+                            <div class="col-3"><button class="btn btn-info btn-block" ng-click="clearDisplay()">C</button></div>
+                            <div class="col-3"><button class="btn btn-warning btn-block" ng-click="appendToDisplay('+')">+</button></div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12"><button class="btn btn-success btn-block" ng-click="calculateResult()">=</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
