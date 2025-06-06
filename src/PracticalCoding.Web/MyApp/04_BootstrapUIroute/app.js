@@ -25,6 +25,13 @@ myapp.config(function ($stateProvider, $urlRouterProvider) {
             template: 'I could use a drink right now.'
         })
 
+        // CALCULATOR PAGE ===================================
+        .state('calculator', {
+            url: '/calculator',
+            templateUrl: 'Partials/calculator.html',
+            controller: 'calculatorController'
+        })
+
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS ======
         .state('about', {
             url: '/about',
